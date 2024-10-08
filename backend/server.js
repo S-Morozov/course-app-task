@@ -12,6 +12,7 @@ app.use(cors({
 
 app.use(express.json());
 
+// Fetch users from ServiceNow
 app.get('/api/users', async (req, res) => {
     try {
         const response = await axios.get('https://dev197735.service-now.com/api/now/table/x_quo_coursehub_learner?sysparm_limit=10', {
@@ -30,36 +31,7 @@ app.get('/api/users', async (req, res) => {
     }
 });
 
-
-// Endpoint to fetch detailed user data from sys_user
-app.get('/api/user/:sysId', async (req, res) => {
-    const { sysId } = req.params; // Extract user sys_id from the request parameters
-
-    try {
-        const response = await axios.get(`https://dev197735.service-now.com/api/now/table/sys_user`, {
-            auth: {
-                username: 'admin', // Your ServiceNow username
-                password: '2h/qSeX^8jZQ', // Your ServiceNow password
-            },
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            params: {
-                sysparm_query: `sys_id=${sysId}` // Query parameter to fetch specific user
-            }
-        });
-
-        const user = response.data.result; // Extract user data from response
-        res.json(user); // Return the detailed user information
-    } catch (error) {
-        console.error('Error fetching user details:', error);
-        res.status(500).send('Server Error');
-    }
-});
-
-
-
+// Fetch courses from ServiceNow
 app.get('/api/courses', async (req, res) => {
     try {
         const response = await axios.get('https://dev197735.service-now.com/api/now/table/x_quo_coursehub_course?sysparm_limit=10', {
@@ -74,17 +46,18 @@ app.get('/api/courses', async (req, res) => {
     }
 });
 
+// Subscribe user to a course
 app.post('/api/subscribe', async (req, res) => {
-    const { title, userId } = req.body;
+    const { course, learner } = req.body; // Expecting course title and learner user_id
 
-    if (!userId || !title) {
-        return res.status(400).send('userId and title are required');
+    if (!learner || !course) {
+        return res.status(400).send('Learner and course are required');
     }
 
     try {
-        const response = await axios.post('https://dev197735.service-now.com/api/now/table/x_quo_coursehub_course_subscription', {
-            course_title: title,
-            user_id: userId.value 
+        const response = await axios.post('https://dev197735.service-now.com/api/now/table/x_snc_course_subsc_subscriptions_table', {
+            course: title,
+            learner: learner,
         }, {
             auth: {
                 username: 'admin',
@@ -104,13 +77,17 @@ app.post('/api/subscribe', async (req, res) => {
     }
 });
 
-
+// Unsubscribe user from a course
 app.delete('/api/unsubscribe', async (req, res) => {
-    const { userId, title } = req.body;
+    const { learner, title } = req.body;
+
+    if (!learner || !title) {
+        return res.status(400).send('Learner and title are required');
+    }
 
     try {
-        await axios.delete(`https://dev197735.service-now.com/api/now/table/x_quo_coursehub_course_subscription`, {
-            data: { userId, title },
+        await axios.delete(`https://dev197735.service-now.com/api/now/table/x_snc_course_subsc_subscriptions_table`, {
+            data: { learner, title },
             auth: { username: 'admin', password: '2h/qSeX^8jZQ' },
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
         });
