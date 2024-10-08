@@ -72,8 +72,8 @@ const App: React.FC = () => {
               await Promise.all(
                   basketCourses.map(course =>
                       axios.post('http://localhost:5001/api/subscribe', {
-                          course: course.sys_id, // Используем sys_id
-                          learner: currentUser.user_id // Используем user_id
+                          course: course.sys_id,
+                          learner: currentUser.user_id 
                       })
                   )
               );
