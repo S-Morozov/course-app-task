@@ -1,38 +1,257 @@
-.App {
+#root {
+  width: 100%;
+  margin: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: #4b5885;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-end; /* Align content to the right */
+  align-items: center; /* Center items vertically */
+  padding: 4rem 2rem; /* Padding around the header */
+  background: linear-gradient(180deg, #5b9aad, #d9d9d9); /* Gradient from blue to gray */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  position: relative; /* Context for child positioning */
+  z-index: 100; /* Ensure header stays above other content */
+  margin-bottom: 2rem; /* Space below the header */
 }
 
-.App-link {
-  color: #61dafb;
+/* Header text styles */
+.App-header h1 {
+  margin: 0; /* Remove default margin */
+  color: #fefefe; /* Header text color */
+  font-size: 1.5rem; /* Font size for the header */
+  font-weight: bold; /* Bold text */
+  text-align: right; /* Align text to the right */
+  margin-left: auto; /* Add space before the username */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+/* Title card styles */
+.titleCard {
+  animation: fadeIn 0.5s; /* Fade-in effect */
+  background-color: rgba(255, 255, 255, 0.9); /* More opaque background for better readability */
+  padding: 20px; /* Padding for content */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  margin: 40px auto; /* Margin to separate from other elements */
+  max-width: 300px; /* Max width for the card */
+  text-align: center; /* Center text alignment */
+  position: relative; /* For positioning pseudo-elements */
+  overflow: hidden; /* Prevent overflow of child elements */
+}
+
+/* Title styles within the title card */
+.titleCard h3 {
+  font-size: 24px; /* Font size for the title */
+  font-weight: bold; /* Bold font weight */
+  color: #629ab9; /* Dark color for contrast */
+  margin: 0 0 12px; /* Margin below the title */
+  text-transform: uppercase; /* Uppercase for emphasis */
+  letter-spacing: 1px; /* Spacing between letters */
+  position: relative; /* For positioning pseudo-elements */
+}
+
+/* Decorative underline for the title */
+.titleCard h3::after {
+  content: ""; /* Empty content for the underline */
+  display: block; /* Block element to create a new line */
+  width: 50%; /* Start width */
+  height: 4px; /* Height of the underline */
+  background-color: #da5427; /* Color of the underline */
+  margin: 10px auto; /* Center the underline */
+  transition: width 0.3s; /* Smooth transition for width */
+}
+
+/* Hover effect for the title underline */
+.titleCard h3:hover::after {
+  width: 100%; /* Expand to full width on hover */
+}
+
+/* Optional: Add a subtle background effect on hover */
+.titleCard:hover {
+  background-color: rgba(255, 255, 255, 1); /* Fully opaque on hover */
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+
+
+
+
+
+main {
+  margin-top: 2rem; /* Space below the header */
+}
+
+
+
+
+
+
+/* Notification styles */
+.notification {
+  position: fixed; /* Fixed position to stay at the top */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  background-color: #9f4948; /* Default background color for notifications */
+  color: white; /* Text color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px 20px; /* Padding for content */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  z-index: 200; /* Ensure it stays on top of other content */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+  opacity: 1; /* Initially visible */
+  transform: translateY(20px); /* Start slightly below */
+}
+
+/* Slide-in effect */
+.notification.show {
+  transform: translateY(0); /* Slide to original position */
+}
+
+/* Fade-out effect */
+.notification.fade-out {
+  opacity: 0; /* Make it invisible */
+  transform: translateY(20px); /* Slide down slightly */
+}
+
+/* Success style */
+.notification.success {
+  background-color: #3f7d90; /* Color for success messages */
+}
+
+/* Error style */
+.notification.error {
+  background-color: #d9534f; /* Color for error messages (red) */
+}
+
+/* Button styles in the notification */
+.notification button {
+  margin-top: 10px; /* Space above the button */
+  background-color: #1a3185; /* Button background */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Padding for button */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.notification button:hover {
+  background-color: #1a5d70; /* Darker shade on hover */
+}
+
+/* Resetting list styles */
+ul {
+  list-style-type: none; /* Remove bullets from the list */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+
+
+
+/* Animated title styles */
+.animatedTitle {
+  opacity: 0; /* Initial opacity */
+  transform: translateY(-20px); /* Start position slightly above */
+  animation: fadeInUp 0.6s forwards; /* Apply animation */
+  margin-bottom: 20px; /* Bottom margin */
+}
+
+/* Fade-in up keyframes */
+@keyframes fadeInUp {
+  0% {
+      opacity: 0; /* Fully transparent */
+      transform: translateY(-20px); /* Shifted upwards */
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+      opacity: 1; /* Fully visible */
+      transform: translateY(0); /* Back to original position */
+  }
+}
+
+/* Title card styles */
+.titleCard {
+  background-color: #fff; /* White background */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px; /* Padding inside the card */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+  transform: translateY(-20px); /* Start position slightly above */
+  opacity: 0; /* Initial opacity */
+  animation: slideIn 0.6s forwards; /* Apply animation */
+  margin-bottom: 20px; /* Bottom margin */
+}
+
+/* Slide-in keyframes */
+@keyframes slideIn {
+  0% {
+      opacity: 0; /* Fully transparent */
+      transform: translateY(-20px); /* Shifted upwards */
+  }
+  100% {
+      opacity: 1; /* Fully visible */
+      transform: translateY(0); /* Back to original position */
+  }
+}
+
+/* Header styles for course list */
+.coursesListContainer h3 {
+  font-size: 2rem; /* Increased text size */
+  color: #2c3e50; /* Deep blue color */
+  text-transform: uppercase; /* Uppercase letters */
+  letter-spacing: 2px; /* Letter spacing */
+  font-weight: 700; /* Bold font */
+  background: linear-gradient(90deg, #3498db, #9b59b6); /* Gradient on text */
+  -webkit-background-clip: text; /* For gradient on text */
+  -webkit-text-fill-color: transparent; /* Transparent text to show gradient */
+  margin: 0; /* Remove margins */
+}
+
+/* Header styles */
+.header {
+  font-size: 16px; /* Font size for header */
+  font-weight: bold; /* Bold font for emphasis */
+  color: #333; /* Dark text color */
+  text-align: center; /* Center the header */
+  margin-bottom: 16px; /* Space below the header */
+}
+
+/* Media Queries */
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .myCoursesContainer {
+      width: 95%; /* Full width for small screens */
+      margin: 40px auto 0; /* Adjust top margin */
+      padding: 8px; /* Reduce padding */
+  }
+
+  .courseItem {
+      flex-direction: column; /* Stack buttons below title */
+      align-items: center; /* Center align items */
+      text-align: center; /* Center align text */
+  }
+
+  .courseTitle {
+      font-size: 14px; /* Slightly decrease font size */
+      margin-bottom: 8px; /* Add space below the title */
+      flex: none; /* Remove flex-grow */
+  }
+
+  .buttonContainer button {
+      width: 48%; /* Make buttons take less space */
+      font-size: 12px; /* Smaller button text for mobile */
   }
 }

@@ -1,0 +1,23 @@
+.button {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white; /* Button text color */
+    border: none;
+    padding: 12px 20px; /* Adjust padding */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    margin-top: 16px; /* Spacing */
+    position: relative; /* Maintain stacking context */
+}
+
+.button:hover {
+    background: linear-gradient(90deg, #0056b3, #007bff); /* Reverse gradient on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.button:disabled {
+    background: #ccc; /* Grey out when disabled */
+    cursor: not-allowed; /* Not allowed cursor */
+    opacity: 0.7; /* Optional: add opacity for disabled state */
+}

@@ -1,0 +1,19 @@
+.footer {
+    background-color: #282c34;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative; /* Allows for better layout */
+    bottom: 0; /* Positions it at the bottom */
+    width: 100%; /* Full width */
+}
+
+.footerLink {
+    color: #61dafb;
+    text-decoration: none;
+    margin: 0 10px; /* Margin between links */
+}
+
+.footerLink:hover {
+    text-decoration: underline; /* Underline effect on hover */
+}

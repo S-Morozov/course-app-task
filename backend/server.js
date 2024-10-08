@@ -1,18 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
+const axios = require('axios'); 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000', 
     methods: ['GET', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
 
-// Fetch users from ServiceNow
+
 app.get('/api/users', async (req, res) => {
     try {
         const response = await axios.get('https://dev197735.service-now.com/api/now/table/x_quo_coursehub_learner?sysparm_limit=10', {
@@ -31,7 +31,7 @@ app.get('/api/users', async (req, res) => {
     }
 });
 
-// Fetch courses from ServiceNow
+
 app.get('/api/courses', async (req, res) => {
     try {
         const response = await axios.get('https://dev197735.service-now.com/api/now/table/x_quo_coursehub_course?sysparm_limit=10', {
@@ -46,18 +46,17 @@ app.get('/api/courses', async (req, res) => {
     }
 });
 
-// Subscribe user to a course
 app.post('/api/subscribe', async (req, res) => {
-    const { course, learner } = req.body; // Expecting course title and learner user_id
+    const { course, learner } = req.body;
 
     if (!learner || !course) {
         return res.status(400).send('Learner and course are required');
     }
 
     try {
-        const response = await axios.post('https://dev197735.service-now.com/api/now/table/x_snc_course_subsc_subscriptions_table', {
-            course: title,
-            learner: learner,
+        const response = await axios.post('https://dev197735.service-now.com/api/now/table/x_quo_coursehub_course_subscription', {
+            course: { value: course },
+            learner: { value: learner }, 
         }, {
             auth: {
                 username: 'admin',
@@ -68,7 +67,6 @@ app.post('/api/subscribe', async (req, res) => {
                 'Content-Type': 'application/json',
             }
         });
-        
 
         console.log('Response from ServiceNow:', response.data);
         res.status(200).json(response.data);
@@ -78,7 +76,6 @@ app.post('/api/subscribe', async (req, res) => {
     }
 });
 
-// Unsubscribe user from a course
 app.delete('/api/unsubscribe', async (req, res) => {
     const { learner, title } = req.body;
 
@@ -87,7 +84,7 @@ app.delete('/api/unsubscribe', async (req, res) => {
     }
 
     try {
-        await axios.delete(`https://dev197735.service-now.com/api/now/table/x_snc_course_subsc_subscriptions_table`, {
+        await axios.delete(`https://dev197735.service-now.com/api/now/table/x_quo_coursehub_course_subscription`, {
             data: { learner, title },
             auth: { username: 'admin', password: '2h/qSeX^8jZQ' },
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
@@ -98,8 +95,7 @@ app.delete('/api/unsubscribe', async (req, res) => {
         console.error('Error unsubscribing:', error);
         res.status(500).send('Error unsubscribing');
     }
-})
-
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

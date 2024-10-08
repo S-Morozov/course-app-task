@@ -1,0 +1,141 @@
+.courseCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #f7f9fc;
+    position: relative;
+    overflow: hidden;
+}
+
+.courseCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 123, 255, 0.1);
+    z-index: 0;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.courseCard:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+.courseCard:hover::before {
+    opacity: 1;
+}
+
+.courseTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 12px;
+    color: #aa5454;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.courseTitle::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 4px;
+    background-color: #da5427;
+    margin-top: 4px;
+    transition: width 0.3s;
+}
+
+.courseTitle:hover::after {
+    width: 100%;
+}
+
+.courseDescriptionWrapper {
+    border: 1px solid #da5427;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.courseDescription {
+    font-size: 14px;
+    font-weight: bold;
+    color: #3b5a79;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.courseDuration {
+    font-size: 12px;
+    color: #891a1a;
+    text-align: center;
+    font-weight: bold;
+}
+
+.subscribeButton {
+    background: #2980b9;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    margin-top: 16px;
+    z-index: 1;
+    position: relative;
+}
+
+.subscribeButton:hover {
+    transform: translateY(-3px);
+    background: #1f618d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.learnMoreButton {
+    background: transparent;
+    color: #2980b9;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    transition: color 0.3s, transform 0.3s, border 0.3s;
+    margin-top: 16px;
+    position: relative;
+}
+
+.learnMoreButton:hover {
+    color: #1f618d;
+    transform: translateY(-2px);
+    text-decoration: underline;
+}
+
+.learnMoreButton:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #2980b9;
+    border-radius: 6px;
+    z-index: -1;
+    transition: opacity 0.3s;
+    opacity: 0.3;
+}

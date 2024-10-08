@@ -1,0 +1,123 @@
+
+
+.myCoursesContainer {
+    padding: 16px; /* Container padding */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    max-height: 600px; /* Max height for the container */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 50%; /* Fixed width for the container */
+    margin: 50px auto; /* Center the container */
+}
+
+.header {
+    width: 50%; /* Fixed width for the header */
+    margin: auto; /* Center the header */
+    font-size: 16px; /* Font size for prominence */
+    font-weight: bold; /* Bold font for emphasis */
+    color: #dc6a13; /* Custom color for header */
+    text-align: center; /* Center the header */
+    margin-bottom: 16px; /* Space below the header */
+    padding: 10px; /* Padding for some breathing space */
+}
+
+/* List styles */
+.courseList {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.courseItem {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between title and buttons */
+    align-items: center; /* Center items vertically */
+    padding: 8px; /* Padding for each course item */
+    margin-bottom: 6px; /* Space between items */
+    border-radius: 6px; /* Rounded corners for items */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    background-color: #ffffff; /* White background for items */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Light shadow */
+}
+
+.courseItem:hover {
+    background-color: #f0f8ff; /* Light blue highlight on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.courseTitle {
+    flex: 1; /* Allow the title to take available space */
+    margin-right: 8px; /* Space between title and button container */
+    font-weight: bold; /* Make the title bold */
+    font-size: 14px; /* Font size for visibility */
+    color: #333; /* Darker text color */
+    text-align: left; /* Left-aligned title */
+}
+
+.buttonContainer {
+    display: flex; /* Flexbox for button alignment */
+    gap: 6px; /* Space between buttons */
+    align-items: center; /* Center buttons vertically */
+}
+
+.unsubscribeButton {
+    font-size: 12px; /* Smaller button text */
+    padding: 6px 12px; /* Smaller padding for buttons */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor for buttons */
+    border: none; /* Remove default border */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    background-color: #f44336; /* Red for unsubscribe button */
+    color: white; /* White text for unsubscribe button */
+}
+
+.unsubscribeButton:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+    .myCoursesContainer {
+        width: 95%; /* Full width for very small screens */
+        margin: 40px auto; /* Adjust top margin */
+        padding: 8px; /* Reduce padding */
+    }
+
+    .courseItem {
+        flex-direction: column; /* Stack buttons below title */
+        align-items: center; /* Center align items */
+        text-align: center; /* Center align text */
+    }
+
+    .courseTitle {
+        font-size: 14px; /* Slightly decrease font size */
+        margin-bottom: 8px; /* Add some space below the title */
+        flex: none; /* Remove flex-grow so it doesn't stretch */
+    }
+
+    .buttonContainer {
+        width: 100%; /* Full width for button container */
+        justify-content: space-between; /* Space buttons evenly */
+    }
+
+    .unsubscribeButton {
+        width: 100%; /* Full width for buttons on mobile */
+        font-size: 12px; /* Smaller button text for mobile */
+    }
+
+    .header {
+        font-size: 16px; /* Adjust header size for mobile */
+    }
+}
+
+.emptyState {
+    padding: 16px; 
+    text-align: center; 
+    color: #666; 
+    font-size: 14px; 
+    border: 1px dashed #ccc; 
+    border-radius: 6px; 
+    background-color: #f9f9f9; 
+}

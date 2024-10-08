@@ -1,0 +1,12 @@
+.coursesListContainer {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.courseList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px; 
+    justify-content: center; 
+}
+

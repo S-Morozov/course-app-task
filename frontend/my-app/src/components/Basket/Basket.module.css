@@ -1,0 +1,149 @@
+.basketContainer {
+    padding: 16px; /* Reduced padding */
+    border: 1px solid #ddd; /* Light border for the basket */
+    border-radius: 8px; /* Rounded corners for the basket */
+    max-height: 600px; /* Set a max height for the basket */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 50%; /* Set a fixed width for the basket */
+    margin: 100px auto 0; /* Center the basket */
+}
+
+.basketItem {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between title and buttons */
+    align-items: center; /* Center items vertically */
+    padding: 8px; /* Reduced padding for a more compact feel */
+    margin-bottom: 6px; /* Space between items */
+    border-radius: 6px; /* Rounded corners for items */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    background-color: #ffffff; /* White background for items */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Light shadow */
+}
+
+.basketItem:hover {
+    background-color: #f0f8ff; /* Light blue highlight on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.courseTitle {
+    flex: 1; /* Allow the title to take available space */
+    margin-right: 8px; /* Space between title and button container */
+    font-weight: bold; /* Make the title bold */
+    font-size: 14px; /* Reduced font size for a compact look */
+    color: #333; /* Darker text color */
+    text-align: left; /* Ensure the title is left-aligned */
+}
+
+.buttonContainer {
+    display: flex; /* This is for the button alignment */
+    gap: 6px; /* Space between buttons */
+    align-items: center; /* Center buttons vertically */
+}
+
+.buttonContainer button {
+    font-size: 12px; /* Smaller button text */
+    padding: 6px 12px; /* Smaller padding for buttons */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor for buttons */
+    border: none; /* Remove default border */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+/* Button styles */
+.buttonContainer .confirmButton {
+    background-color: #4caf50; /* Green for confirm button */
+    color: white; /* Text color for confirm button */
+}
+
+.buttonContainer .removeButton {
+    background-color: #f44336; /* Red for remove button */
+    color: white; /* Text color for remove button */
+}
+
+/* Ensure you apply the correct class in your component */
+.buttonContainer .removeButton:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+.buttonContainer button:hover {
+    background-color: #e0e0e0; /* Button hover effect */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Confirm All Subscriptions button */
+.confirmAllButton {
+    margin-top: 16px; /* Space above the confirm all button */
+    background-color: #2196F3; /* Blue for confirm all button */
+    color: white; /* Text color for confirm all button */
+    padding: 8px 16px; /* Padding for the confirm all button */
+    border-radius: 4px; /* Rounded corners for the confirm all button */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor for button */
+    font-size: 14px; /* Font size for better visibility */
+    transition: background-color 0.3s; /* Smooth transition */
+    width: 30%; /* Make confirm all button full-width */
+}
+
+.confirmAllButton:hover {
+    background-color: #1976D2; /* Darker blue on hover */
+}
+
+.header {
+    width: 50%;
+    margin: auto;
+    font-size: 16px; /* Larger font size for prominence */
+    font-weight: bold; /* Bold font for emphasis */
+    color: #333; /* Dark text color */
+    text-align: center; /* Center the header */
+    margin-bottom: 16px; /* Space below the header */
+    padding: 10px; /* Padding for some breathing space */
+    color: #dc6a13; /* Custom color for header */
+}
+
+
+/* Media Queries */
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .basketContainer {
+        width: 95%; /* Full width for very small screens */
+        margin: 40px auto 0; /* Adjust top margin */
+        padding: 8px; /* Reduce padding */
+    }
+
+    .basketItem {
+        flex-direction: column; /* Stack buttons below title */
+        align-items: center; /* Center align items */
+        text-align: center; /* Center align text */
+    }
+
+    .buttonContainer {
+        width: 100%; /* Full width for button container */
+        justify-content: space-between; /* Space buttons evenly */
+    }
+
+    .courseTitle {
+        font-size: 14px; /* Slightly decrease font size */
+        text-align: center; /* Center the course title */
+        margin-bottom: 8px; /* Add some space below the title */
+        flex: none; /* Remove flex-grow so it doesn't stretch */
+    }
+
+    .buttonContainer button {
+        width: 48%; /* Make buttons take less space */
+        font-size: 12px; /* Smaller button text for mobile */
+    }
+
+    .confirmAllButton {
+        width: 100%; /* Make the confirm all button full-width */
+        padding: 10px; /* Ensure enough padding for better touch targets */
+        font-size: 14px; /* Adjust font size for better readability */
+        margin-top: 16px; /* Maintain space above the button */
+    }
+
+    .header {
+        font-size: 16px; /* Adjust header size for mobile */
+    }
+}
