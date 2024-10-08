@@ -1,3 +1,17 @@
+#installing app and using
+After you clone the repo, you have to use 2 terminals as it was earlier: 
+
+For backend: 
+Navigate to the folders
+cd backend 
+node server.js  - and server start
+
+For front end part another terminal 
+1.cd frontend
+2. cd my-app
+3. yarn start
+
+
 # Course Hub
 
 Welcome to the **Course Subscription Application**! This boilerplate application is designed to help you get started with building a simple course subscription application on the ServiceNow platform. It provides the foundational data model and basic configurations, allowing you to focus on implementing the required features and enhancing the application.
