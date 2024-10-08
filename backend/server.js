@@ -31,6 +31,35 @@ app.get('/api/users', async (req, res) => {
 });
 
 
+// Endpoint to fetch detailed user data from sys_user
+app.get('/api/user/:sysId', async (req, res) => {
+    const { sysId } = req.params; // Extract user sys_id from the request parameters
+
+    try {
+        const response = await axios.get(`https://dev197735.service-now.com/api/now/table/sys_user`, {
+            auth: {
+                username: 'admin', // Your ServiceNow username
+                password: '2h/qSeX^8jZQ', // Your ServiceNow password
+            },
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            params: {
+                sysparm_query: `sys_id=${sysId}` // Query parameter to fetch specific user
+            }
+        });
+
+        const user = response.data.result; // Extract user data from response
+        res.json(user); // Return the detailed user information
+    } catch (error) {
+        console.error('Error fetching user details:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+
 app.get('/api/courses', async (req, res) => {
     try {
         const response = await axios.get('https://dev197735.service-now.com/api/now/table/x_quo_coursehub_course?sysparm_limit=10', {
