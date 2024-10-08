@@ -68,6 +68,7 @@ app.post('/api/subscribe', async (req, res) => {
                 'Content-Type': 'application/json',
             }
         });
+        
 
         console.log('Response from ServiceNow:', response.data);
         res.status(200).json(response.data);
